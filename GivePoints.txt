@@ -1,0 +1,76 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="GivePoints.aspx.cs" Inherits="GivePointsCode" %>
+ 
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+   
+ <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], .ddl, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: bisque;
+    padding: 20px;
+}
+</style>
+
+<body>
+
+<h3>Contact Form</h3>
+
+<div class="container">
+  <form>
+    <label >Team Member</label>
+    <br />
+    <asp:DataList ID="DataList1" runat="server"></asp:DataList>
+
+    <label >Give Kudos for:</label>
+    <input type="text" id="Name"/>
+
+    <label>Date:</label>
+    <input type="text" id="Date"/>
+
+    <label>Description:</label>
+    <textarea id="description" placeholder="Write a description of the activity completed..."
+        style="height:200px"></textarea>
+
+    <label>Points Given:</label>
+    <asp:DropDownList ID="PointsGiven" runat="server" CssClass="ddl"></asp:DropDownList>
+
+    <label>Company Value:</label>
+    <asp:DropDownList ID="CompanyValue" runat="server" CssClass="ddl"></asp:DropDownList>
+
+    <asp:Button ID="Button1" runat="server" Text="Submit" CssClass="button" />
+  </form>
+</div>
+
+</body>
+    
+
+     
+</asp:Content>
+
