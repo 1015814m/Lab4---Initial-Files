@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html style="background-size:100% 100%;">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="Main.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="width:100%;">
+    <form id="form1" runat="server" >
+        <asp:Panel ID="Panel1" 
+            runat="server"
+            BackColor="#9D8A62"
+            Height="30%" 
+            style="width:100%; margin-left:-8px; margin-right: -8px;">
+            <asp:Label ID="Label1" runat="server" Text="Elk Logistics" ForeColor="WhiteSmoke" Font-Size="X-Large"></asp:Label>
+            <asp:LoginName ID="LoginName1" runat="server" style="float:right"/>
+        </asp:Panel>
+        <asp:Menu 
+            ID="navbar" 
+            runat="server" 
+            Orientation="Horizontal"
+            renderingmode="List"
+            width="100%" 
+            BackColor="#333333" 
+            DynamicHorizontalOffset="2" 
+            Font-Names="Verdana" 
+            Font-Size="Large"  
+            StaticSubMenuIndent="10px"
+            style="margin-left:-8px; margin-right:-8px;">
+            <Items>
+                <asp:MenuItem Text="Home" NavigateUrl="WebPages/Home.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="View Rewards" NavigateUrl="WebPages/Rewards.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Give Points" NavigateUrl="WebPages/GivePoints.aspx"></asp:MenuItem>
+                
+            </Items>
+            <StaticHoverStyle ForeColor="White" BackColor="#284E98" />
+            <StaticMenuItemStyle VerticalPadding="2px" HorizontalPadding="5px" ForeColor="#cccccc" />
+            <StaticMenuStyle BackColor="#333333" />
+            <StaticSelectedStyle ForeColor="WhiteSmoke" BackColor="#507CD1" />
+        </asp:Menu>
+    <div style="background-color: bisque; width:100%; margin-left:-8px; margin-right: -8px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+            
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
