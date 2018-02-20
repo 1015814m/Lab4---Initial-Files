@@ -1,0 +1,200 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for Employee
+/// </summary>
+public class Employee
+{
+    private string firstName;
+    private string lastName;
+    private string mi;
+    private DateTime DOB;
+    private string email;
+    private string address;
+    private string phoneNum;
+    private DateTime hireDate;
+    private DateTime terminationDate;
+    private DateTime lastUpdated;
+    private string lastUpdatedBy;
+    private string empLoginID;
+    /// <summary>
+    /// Creates an employee object that 
+    /// </summary>
+    /// <param name="firstName"></param>
+    /// <param name="lastName"></param>
+    /// <param name="mi"></param>
+    /// <param name="DOB"></param>
+    /// <param name="email"></param>
+    /// <param name="address"></param>
+    /// <param name="phoneNum"></param>
+    /// <param name="hireDate"></param>
+    /// <param name="terminationDate">Can be null</param>
+    /// <param name="lastUpdatedBy">The administrators name</param>
+    protected Employee(string firstName, string lastName, string mi, DateTime DOB, string email, string address, string phoneNum, DateTime hireDate, DateTime terminationDate, string lastUpdatedBy)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        MI = mi;
+        DateOfBirth = DOB;
+        Email = email;
+        Address = address;
+        Phone = phoneNum;
+        HireDate = hireDate;
+        TerminationDate = terminationDate;
+        LastUpdated = DateTime.Now;
+        LastUpdatedBy = lastUpdatedBy;
+        
+    }
+    public string FirstName
+    {
+        get
+        {
+            return firstName;
+        }
+        private set
+        {
+            firstName = value;
+        }
+    }
+
+    public string LastName
+    {
+        get
+        {
+            return lastName;
+        }
+        private set
+        {
+            lastName = value;
+        }
+    }
+
+    public string MI
+    {
+        get
+        {
+            return mi;
+        }
+        private set
+        {
+            mi = value;
+        }
+    }
+
+    public DateTime DateOfBirth
+    {
+        get
+        {
+            return DOB;
+        }
+        private set
+        {
+            DOB = value;
+        }
+    }
+
+    public string Email
+    {
+        get
+        {
+            return email;
+        }
+        private set
+        {
+            email = value;
+        }
+    }
+
+    public string Address
+    {
+        get
+        {
+            return address;
+        }
+        private set
+        {
+            address = value;
+        }
+    }
+
+    public string Phone
+    {
+        get
+        {
+            return phoneNum;
+        }
+        private set
+        {
+            phoneNum = value;
+        }
+    }
+
+    public DateTime HireDate
+    {
+        get
+        {
+            return hireDate;
+        }
+        private set
+        {
+            hireDate = value;
+        }
+    }
+
+    public DateTime TerminationDate
+    {
+        get
+        {
+            return terminationDate;
+        }
+        private set
+        {
+            terminationDate = value;
+        }
+    }
+
+    public DateTime LastUpdated
+    {
+        get
+        {
+            return lastUpdated;
+        }
+        private set
+        {
+            lastUpdated = value;
+        }
+    }
+
+    public string LastUpdatedBy
+    {
+        get
+        {
+            return lastUpdatedBy;
+        }
+        private set
+        {
+            lastUpdatedBy = value;
+        }
+    }
+
+    public string EmpLoginID
+    {
+        get
+        {
+            return empLoginID;
+        }
+        private set
+        {
+            empLoginID = value;
+        }
+    }
+
+
+
+
+
+
+}
