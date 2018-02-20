@@ -1,0 +1,661 @@
+﻿<!-- Sean Marley -->
+
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Admin.aspx.cs" Inherits="Admin" %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>W3.CSS Template</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        <style>
+        body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+        body {font-size:16px;}
+        .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+        .w3-half img:hover{opacity:1}
+            .auto-style5 {
+                width: 949px;
+            }
+            .auto-style12 {
+                width: 949px;
+                height: 70px;
+            }
+            .auto-style16 {
+                width: 947px;
+                height: 70px;
+            }
+            .auto-style52 {
+                height: 25px;
+                width: 650px;
+            }
+            .auto-style53 {
+                height: 41px;
+                width: 650px;
+            }
+            .auto-style54 {
+                height: 25px;
+                width: 68px;
+            }
+            .auto-style55 {
+                height: 41px;
+                width: 68px;
+            }
+            .auto-style56 {
+                height: 25px;
+                width: 69px;
+            }
+            .auto-style57 {
+                height: 41px;
+                width: 69px;
+            }
+            .auto-style58 {
+                height: 25px;
+                width: 1507px;
+            }
+            .auto-style59 {
+                height: 41px;
+                width: 1507px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+      <div class="w3-container">
+        <h3 class="w3-padding-64"><b>Top 10<br>Solutions</b></h3>
+      </div>
+      <div class="w3-bar-block">
+        <a href="HomePage.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+        <a href="GivePoints.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Give Points</a> 
+        <a href="Rewards.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View Rewards</a> 
+        <a href="Admin.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Administration</a> 
+        <a href="CreateEmp.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Create/Edit Users</a> 
+        <a href="Analytics.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">View Analytics</a> 
+        <a href="Settings.aspx" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Settings</a> 
+        
+      </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+      <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+      <span>Top 10 Solutions</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+      <!-- Header -->
+      <div class="w3-container" style="margin-top:80px" id="showcase">
+        <h1 class="w3-jumbo"><b>Administration</b></h1>
+        <h1 class="w3-xxxlarge w3-text-red"><b>Filler Text</b></h1>
+        <hr style="width:50px;border:5px solid red; float: left;" class="w3-round">
+      </div>
+
+    <div class="w3-container" id="administration" style="margin-top: 75px;">
+
+    <!-- Actual Form Code -->
+        <form id="feed" runat="server">
+    <div>
+    
+        <table class="auto-style16" style="border-bottom-style: solid; border-color: #DFC39B">
+            <tr>
+                <td class="auto-style52">
+                    <asp:Label ID="Label18" runat="server" Font-Bold="True" ForeColor="#005480" Text="Employee Name - "></asp:Label>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52"></td>
+                <td class="auto-style56">&nbsp;</td>
+                <td class="auto-style52"></td>
+            </tr>
+            <tr>
+                <td class="auto-style53">
+                    <asp:Label ID="Label19" runat="server" Text="First Name: "></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    <asp:TextBox ID="FirstNameText" runat="server" Width="228px"></asp:TextBox>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label20" runat="server" Text="Middle Initial: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="MiddleText" runat="server" Width="39px"></asp:TextBox>
+                </td>
+                <td class="auto-style57">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label21" runat="server" Text="Last Name: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="LastNameText" runat="server" Width="209px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style52">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ErrorMessage="(First Name Required)" Font-Italic="True" ForeColor="Red" ControlToValidate="FirstNameText"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ErrorMessage="(Middle Initial Required)" Font-Italic="True" ForeColor="Red" ControlToValidate="MiddleText"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style56">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ErrorMessage="(Last Name Required)" Font-Italic="True" ForeColor="Red" ControlToValidate="LastNameText"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table class="auto-style5" style="border-bottom-style: solid; border-color: #DFC39B">
+            <tr>
+                <td class="auto-style52">
+                    <asp:Label ID="Label22" runat="server" Font-Bold="True" ForeColor="#005480" Text="Employee Address -"></asp:Label>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52"></td>
+                <td class="auto-style54">&nbsp;</td>
+                <td class="auto-style52"></td>
+            </tr>
+            <tr>
+                <td class="auto-style53">
+                    <asp:Label ID="Label23" runat="server" Text="House Number: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="HouseNumberText" runat="server" Width="174px"></asp:TextBox>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label24" runat="server" Text="Street Name: "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    <asp:TextBox ID="StreetNameText" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label25" runat="server" Text="City: "></asp:Label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    <asp:TextBox ID="CityText" runat="server" Width="173px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style52">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ErrorMessage="(House Number Required)" CssClass="validators" Font-Italic="True" ControlToValidate="HouseNumberText" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ErrorMessage="(Street Name Required)" CssClass="validators" ControlToValidate="StreetNameText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ErrorMessage="(City Name Required)" CssClass="validators" ControlToValidate="CityText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style53">
+                    <asp:Label ID="Label26" runat="server" Text="State: "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    <asp:DropDownList ID="StateList" runat="server" Height="22px" Width="128px" AppendDataBoundItems="True">
+                        <asp:ListItem Text="-None-" Value="" />
+                        <asp:ListItem>AL</asp:ListItem>
+                        <asp:ListItem>AK</asp:ListItem>
+                        <asp:ListItem>AR</asp:ListItem>
+                        <asp:ListItem>CA</asp:ListItem>
+                        <asp:ListItem>CO</asp:ListItem>
+                        <asp:ListItem>CT</asp:ListItem>
+                        <asp:ListItem>DE</asp:ListItem>
+                        <asp:ListItem>FL</asp:ListItem>
+                        <asp:ListItem>GA</asp:ListItem>
+                        <asp:ListItem>HI</asp:ListItem>
+                        <asp:ListItem>ID</asp:ListItem>
+                        <asp:ListItem>IL</asp:ListItem>
+                        <asp:ListItem>IN</asp:ListItem>
+                        <asp:ListItem>IA</asp:ListItem>
+                        <asp:ListItem>KS</asp:ListItem>
+                        <asp:ListItem>KY</asp:ListItem>
+                        <asp:ListItem>LA</asp:ListItem>
+                        <asp:ListItem>ME</asp:ListItem>
+                        <asp:ListItem>MD</asp:ListItem>
+                        <asp:ListItem>MA</asp:ListItem>
+                        <asp:ListItem>MI</asp:ListItem>
+                        <asp:ListItem>MN</asp:ListItem>
+                        <asp:ListItem>MS</asp:ListItem>
+                        <asp:ListItem>MO</asp:ListItem>
+                        <asp:ListItem>MT</asp:ListItem>
+                        <asp:ListItem>NE</asp:ListItem>
+                        <asp:ListItem>NV</asp:ListItem>
+                        <asp:ListItem>NH</asp:ListItem>
+                        <asp:ListItem>NJ</asp:ListItem>
+                        <asp:ListItem>NM</asp:ListItem>
+                        <asp:ListItem>NY</asp:ListItem>
+                        <asp:ListItem>NC</asp:ListItem>
+                        <asp:ListItem>ND</asp:ListItem>
+                        <asp:ListItem>OH</asp:ListItem>
+                        <asp:ListItem>OK</asp:ListItem>
+                        <asp:ListItem>OR</asp:ListItem>
+                        <asp:ListItem>PA</asp:ListItem>
+                        <asp:ListItem>RI</asp:ListItem>
+                        <asp:ListItem>SC</asp:ListItem>
+                        <asp:ListItem>SD</asp:ListItem>
+                        <asp:ListItem>TN</asp:ListItem>
+                        <asp:ListItem>TX</asp:ListItem>
+                        <asp:ListItem>UT</asp:ListItem>
+                        <asp:ListItem>VT</asp:ListItem>
+                        <asp:ListItem>VA</asp:ListItem>
+                        <asp:ListItem>WA</asp:ListItem>
+                        <asp:ListItem>WV</asp:ListItem>
+                        <asp:ListItem>WI</asp:ListItem>
+                        <asp:ListItem>WY</asp:ListItem>
+                        <asp:ListItem></asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label27" runat="server" Text="Country: "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br />
+                    <asp:DropDownList ID="CountriesList" runat="server" Height="22px" Width="128px">
+                        <asp:ListItem Text="-None-" Value="" />
+                        <asp:ListItem>US</asp:ListItem>
+                        <asp:ListItem>AC</asp:ListItem>
+                        <asp:ListItem>AF</asp:ListItem>
+                        <asp:ListItem>AX</asp:ListItem>
+                        <asp:ListItem>AL</asp:ListItem>
+                        <asp:ListItem>DZ</asp:ListItem>
+                        <asp:ListItem>AD</asp:ListItem>
+                        <asp:ListItem>AO</asp:ListItem>
+                        <asp:ListItem>AI</asp:ListItem>
+                        <asp:ListItem>AQ</asp:ListItem>
+                        <asp:ListItem>AG</asp:ListItem>
+                        <asp:ListItem>AR</asp:ListItem>
+                        <asp:ListItem>AM</asp:ListItem>
+                        <asp:ListItem>AW</asp:ListItem>
+                        <asp:ListItem>AU</asp:ListItem>
+                        <asp:ListItem>AT</asp:ListItem>
+                        <asp:ListItem>AZ</asp:ListItem>
+                        <asp:ListItem>BS</asp:ListItem>
+                        <asp:ListItem>BH</asp:ListItem>
+                        <asp:ListItem>BD</asp:ListItem>
+                        <asp:ListItem>BB</asp:ListItem>
+                        <asp:ListItem>BY</asp:ListItem>
+                        <asp:ListItem>BE</asp:ListItem>
+                        <asp:ListItem>BZ</asp:ListItem>
+                        <asp:ListItem>BJ</asp:ListItem>
+                        <asp:ListItem>BM</asp:ListItem>
+                        <asp:ListItem>BT</asp:ListItem>
+                        <asp:ListItem>BO</asp:ListItem>
+                        <asp:ListItem>BA</asp:ListItem>
+                        <asp:ListItem>BW</asp:ListItem>
+                        <asp:ListItem>BV</asp:ListItem>
+                        <asp:ListItem>BR</asp:ListItem>
+                        <asp:ListItem>IO</asp:ListItem>
+                        <asp:ListItem>VG</asp:ListItem>
+                        <asp:ListItem>BN</asp:ListItem>
+                        <asp:ListItem>BG</asp:ListItem>
+                        <asp:ListItem>BF</asp:ListItem>
+                        <asp:ListItem>BI</asp:ListItem>
+                        <asp:ListItem>KH</asp:ListItem>
+                        <asp:ListItem>CM</asp:ListItem>
+                        <asp:ListItem>CA</asp:ListItem>
+                        <asp:ListItem>CV</asp:ListItem>
+                        <asp:ListItem>KY</asp:ListItem>
+                        <asp:ListItem>CF</asp:ListItem>
+                        <asp:ListItem>TD</asp:ListItem>
+                        <asp:ListItem>CL</asp:ListItem>
+                        <asp:ListItem>CN</asp:ListItem>
+                        <asp:ListItem>CX</asp:ListItem>
+                        <asp:ListItem>CC</asp:ListItem>
+                        <asp:ListItem>CO</asp:ListItem>
+                        <asp:ListItem>KM</asp:ListItem>
+                        <asp:ListItem>CG</asp:ListItem>
+                        <asp:ListItem>CD</asp:ListItem>
+                        <asp:ListItem>CK</asp:ListItem>
+                        <asp:ListItem>CR</asp:ListItem>
+                        <asp:ListItem>CI</asp:ListItem>
+                        <asp:ListItem>HR</asp:ListItem>
+                        <asp:ListItem>CU</asp:ListItem>
+                        <asp:ListItem>CY</asp:ListItem>
+                        <asp:ListItem>CZ</asp:ListItem>
+                        <asp:ListItem>DK</asp:ListItem>
+                        <asp:ListItem>DJ</asp:ListItem>
+                        <asp:ListItem>DM</asp:ListItem>
+                        <asp:ListItem>DO</asp:ListItem>
+                        <asp:ListItem>TP</asp:ListItem>
+                        <asp:ListItem>EC</asp:ListItem>
+                        <asp:ListItem>EG</asp:ListItem>
+                        <asp:ListItem>SV</asp:ListItem>
+                        <asp:ListItem>GQ</asp:ListItem>
+                        <asp:ListItem>EE</asp:ListItem>
+                        <asp:ListItem>ET</asp:ListItem>
+                        <asp:ListItem>FK</asp:ListItem>
+                        <asp:ListItem>FO</asp:ListItem>
+                        <asp:ListItem>FJ</asp:ListItem>
+                        <asp:ListItem>FI</asp:ListItem>
+                        <asp:ListItem>FR</asp:ListItem>
+                        <asp:ListItem>FX</asp:ListItem>
+                        <asp:ListItem>GF</asp:ListItem>
+                        <asp:ListItem>PF</asp:ListItem>
+                        <asp:ListItem>TF</asp:ListItem>
+                        <asp:ListItem>GA</asp:ListItem>
+                        <asp:ListItem>GM</asp:ListItem>
+                        <asp:ListItem>GE</asp:ListItem>
+                        <asp:ListItem>DE</asp:ListItem>
+                        <asp:ListItem>GH</asp:ListItem>
+                        <asp:ListItem>GI</asp:ListItem>
+                        <asp:ListItem>GR</asp:ListItem>
+                        <asp:ListItem>GL</asp:ListItem>
+                        <asp:ListItem>GD</asp:ListItem>
+                        <asp:ListItem>GP</asp:ListItem>
+                        <asp:ListItem>GU</asp:ListItem>
+                        <asp:ListItem>GT</asp:ListItem>
+                        <asp:ListItem>GN</asp:ListItem>
+                        <asp:ListItem>GW</asp:ListItem>
+                        <asp:ListItem>GY</asp:ListItem>
+                        <asp:ListItem>HT</asp:ListItem>
+                        <asp:ListItem>HM</asp:ListItem>
+                        <asp:ListItem>HN</asp:ListItem>
+                        <asp:ListItem>HK</asp:ListItem>
+                        <asp:ListItem>HU</asp:ListItem>
+                        <asp:ListItem>IS</asp:ListItem>
+                        <asp:ListItem>IN</asp:ListItem>
+                        <asp:ListItem>ID</asp:ListItem>
+                        <asp:ListItem>IR</asp:ListItem>
+                        <asp:ListItem>IQ</asp:ListItem>
+                        <asp:ListItem>IE</asp:ListItem>
+                        <asp:ListItem>IM</asp:ListItem>
+                        <asp:ListItem>IL</asp:ListItem>
+                        <asp:ListItem>IT</asp:ListItem>
+                        <asp:ListItem>JM</asp:ListItem>
+                        <asp:ListItem>JP</asp:ListItem>
+                        <asp:ListItem>JO</asp:ListItem>
+                        <asp:ListItem>KZ</asp:ListItem>
+                        <asp:ListItem>KE</asp:ListItem>
+                        <asp:ListItem>KI</asp:ListItem>
+                        <asp:ListItem>KP</asp:ListItem>
+                        <asp:ListItem>KR</asp:ListItem>
+                        <asp:ListItem>KW</asp:ListItem>
+                        <asp:ListItem>KG</asp:ListItem>
+                        <asp:ListItem>LA</asp:ListItem>
+                        <asp:ListItem>LV</asp:ListItem>
+                        <asp:ListItem>LB</asp:ListItem>
+                        <asp:ListItem>LS</asp:ListItem>
+                        <asp:ListItem>LR</asp:ListItem>
+                        <asp:ListItem>LY</asp:ListItem>
+                        <asp:ListItem>LI</asp:ListItem>
+                        <asp:ListItem>LT</asp:ListItem>
+                        <asp:ListItem>LU</asp:ListItem>
+                        <asp:ListItem>MO</asp:ListItem>
+                        <asp:ListItem>MK</asp:ListItem>
+                        <asp:ListItem>MG</asp:ListItem>
+                        <asp:ListItem>MW</asp:ListItem>
+                        <asp:ListItem>MY</asp:ListItem>
+                        <asp:ListItem>MV</asp:ListItem>
+                        <asp:ListItem>ML</asp:ListItem>
+                        <asp:ListItem>MT</asp:ListItem>
+                        <asp:ListItem>MH</asp:ListItem>
+                        <asp:ListItem>MQ</asp:ListItem>
+                        <asp:ListItem>MR</asp:ListItem>
+                        <asp:ListItem>MU</asp:ListItem>
+                        <asp:ListItem>YT</asp:ListItem>
+                        <asp:ListItem>MX</asp:ListItem>
+                        <asp:ListItem>FM</asp:ListItem>
+                        <asp:ListItem>MD</asp:ListItem>
+                        <asp:ListItem>MC</asp:ListItem>
+                        <asp:ListItem>MN</asp:ListItem>
+                        <asp:ListItem>ME</asp:ListItem>
+                        <asp:ListItem>MS</asp:ListItem>
+                        <asp:ListItem>MA</asp:ListItem>
+                        <asp:ListItem>MZ</asp:ListItem>
+                        <asp:ListItem>MM</asp:ListItem>
+                        <asp:ListItem>NA</asp:ListItem>
+                        <asp:ListItem>NR</asp:ListItem>
+                        <asp:ListItem>NP</asp:ListItem>
+                        <asp:ListItem>AN</asp:ListItem>
+                        <asp:ListItem>NL</asp:ListItem>
+                        <asp:ListItem>NC</asp:ListItem>
+                        <asp:ListItem>NZ</asp:ListItem>
+                        <asp:ListItem>NI</asp:ListItem>
+                        <asp:ListItem>NE</asp:ListItem>
+                        <asp:ListItem>NG</asp:ListItem>
+                        <asp:ListItem>NU</asp:ListItem>
+                        <asp:ListItem>NF</asp:ListItem>
+                        <asp:ListItem>MP</asp:ListItem>
+                        <asp:ListItem>NO</asp:ListItem>
+                        <asp:ListItem>OM</asp:ListItem>
+                        <asp:ListItem>PK</asp:ListItem>
+                        <asp:ListItem>PW</asp:ListItem>
+                        <asp:ListItem>PS</asp:ListItem>
+                        <asp:ListItem>PA</asp:ListItem>
+                        <asp:ListItem>PG</asp:ListItem>
+                        <asp:ListItem>PY</asp:ListItem>
+                        <asp:ListItem>PE</asp:ListItem>
+                        <asp:ListItem>PH</asp:ListItem>
+                        <asp:ListItem>PN</asp:ListItem>
+                        <asp:ListItem>PL</asp:ListItem>
+                        <asp:ListItem>PT</asp:ListItem>
+                        <asp:ListItem>PR</asp:ListItem>
+                        <asp:ListItem>QA</asp:ListItem>
+                        <asp:ListItem>RE</asp:ListItem>
+                        <asp:ListItem>RO</asp:ListItem>
+                        <asp:ListItem>RU</asp:ListItem>
+                        <asp:ListItem>RW</asp:ListItem>
+                        <asp:ListItem>WS</asp:ListItem>
+                        <asp:ListItem>SM</asp:ListItem>
+                        <asp:ListItem>ST</asp:ListItem>
+                        <asp:ListItem>SA</asp:ListItem>
+                        <asp:ListItem>UK</asp:ListItem>
+                        <asp:ListItem>SN</asp:ListItem>
+                        <asp:ListItem>RS</asp:ListItem>
+                        <asp:ListItem>SC</asp:ListItem>
+                        <asp:ListItem>SL</asp:ListItem>
+                        <asp:ListItem>SG</asp:ListItem>
+                        <asp:ListItem>SK</asp:ListItem>
+                        <asp:ListItem>SI</asp:ListItem>
+                        <asp:ListItem>SB</asp:ListItem>
+                        <asp:ListItem>SO</asp:ListItem>
+                        <asp:ListItem>AS</asp:ListItem>
+                        <asp:ListItem>ZA</asp:ListItem>
+                        <asp:ListItem>GS</asp:ListItem>
+                        <asp:ListItem>SU</asp:ListItem>
+                        <asp:ListItem>ES</asp:ListItem>
+                        <asp:ListItem>LK</asp:ListItem>
+                        <asp:ListItem>SH</asp:ListItem>
+                        <asp:ListItem>KN</asp:ListItem>
+                        <asp:ListItem>LC</asp:ListItem>
+                        <asp:ListItem>PM</asp:ListItem>
+                        <asp:ListItem>VC</asp:ListItem>
+                        <asp:ListItem>SD</asp:ListItem>
+                        <asp:ListItem>SR</asp:ListItem>
+                        <asp:ListItem>SJ</asp:ListItem>
+                        <asp:ListItem>SZ</asp:ListItem>
+                        <asp:ListItem>SE</asp:ListItem>
+                        <asp:ListItem>CH</asp:ListItem>
+                        <asp:ListItem>SY</asp:ListItem>
+                        <asp:ListItem>TW</asp:ListItem>
+                        <asp:ListItem>TJ</asp:ListItem>
+                        <asp:ListItem>TZ</asp:ListItem>
+                        <asp:ListItem>TH</asp:ListItem>
+                        <asp:ListItem>TG</asp:ListItem>
+                        <asp:ListItem>TK</asp:ListItem>
+                        <asp:ListItem>TO</asp:ListItem>
+                        <asp:ListItem>TT</asp:ListItem>
+                        <asp:ListItem>TN</asp:ListItem>
+                        <asp:ListItem>TR</asp:ListItem>
+                        <asp:ListItem>TM</asp:ListItem>
+                        <asp:ListItem>TC</asp:ListItem>
+                        <asp:ListItem>TV</asp:ListItem>
+                        <asp:ListItem>UG</asp:ListItem>
+                        <asp:ListItem>UA</asp:ListItem>
+                        <asp:ListItem>AE</asp:ListItem>
+                        <asp:ListItem>GB</asp:ListItem>
+                        <asp:ListItem>UK</asp:ListItem>
+                        <asp:ListItem>UM</asp:ListItem>
+                        <asp:ListItem>UY</asp:ListItem>
+                        <asp:ListItem>UZ</asp:ListItem>
+                        <asp:ListItem>VU</asp:ListItem>
+                        <asp:ListItem>VA</asp:ListItem>
+                        <asp:ListItem>VE</asp:ListItem>
+                        <asp:ListItem>VN</asp:ListItem>
+                        <asp:ListItem>VI</asp:ListItem>
+                        <asp:ListItem>WF</asp:ListItem>
+                        <asp:ListItem>EH</asp:ListItem>
+                        <asp:ListItem>YE</asp:ListItem>
+                        <asp:ListItem>ZM</asp:ListItem>
+                        <asp:ListItem>ZW</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label28" runat="server" Text="Zip Code: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="ZipCodeText" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style52">
+                    </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ErrorMessage="(Country Name Required)" CssClass="validators" ControlToValidate="CountriesList" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ErrorMessage="(Zip Code Required)" CssClass="validators" ControlToValidate="ZipCodeText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table class="auto-style12" style="border-bottom-style: solid; border-color: #DFC39B">
+            <tr>
+                <td class="auto-style58">
+                    <asp:Label ID="Label29" runat="server" Font-Bold="True" ForeColor="#005480" Text="Employee Information - "></asp:Label>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52"></td>
+                <td class="auto-style54">&nbsp;</td>
+                <td class="auto-style52"></td>
+            </tr>
+            <tr>
+                <td class="auto-style59">
+                    <asp:Label ID="Label30" runat="server" Text="Date of Birth: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="DOBText" runat="server"></asp:TextBox>
+                    <asp:Label ID="Label35" runat="server" Font-Italic="True" Font-Size="Small" Text="ex. (YYYY-MM-DD)"></asp:Label>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label31" runat="server" Text="Email: "></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+&nbsp;<asp:TextBox ID="EmailText" runat="server" Width="260px"></asp:TextBox>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label32" runat="server" Text="Phone Number: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="PhoneNumberText" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style58">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ErrorMessage="(DOB Required)" CssClass="validators" ControlToValidate="DOBText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ErrorMessage="(Email Required)" CssClass="validators" ControlToValidate="EmailText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator23" runat="server" ErrorMessage="(Phone Number Required)" CssClass="validators" ControlToValidate="PhoneNumberText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style59">
+                    <asp:Label ID="Label33" runat="server" Text="Hire Date: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="HireDateText" runat="server" Width="123px"></asp:TextBox>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53">
+                    <asp:Label ID="Label34" runat="server" Text="Termination Date: "></asp:Label>
+                    <br />
+                    <asp:TextBox ID="TerminationDateText" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style53"></td>
+            </tr>
+            <tr>
+                <td class="auto-style58">
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ErrorMessage="(Hire Date Required)" CssClass="validators" ControlToValidate="HireDateText" Font-Italic="True" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52">
+                    </td>
+                <td class="auto-style54">
+                    &nbsp;</td>
+                <td class="auto-style52"></td>
+            </tr>
+        </table>
+    
+    </div>
+    
+        </form>
+    </div>
+  
+
+    <!-- End page content -->
+    </div>
+
+    <!-- W3.CSS Container -->
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+
+    </body>
+</html>
