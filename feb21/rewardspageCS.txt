@@ -1,0 +1,178 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using database;
+using System.Data.SqlClient;
+
+public partial class Rewards : System.Web.UI.Page
+{
+    static int index;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["employeeLoggedIn"] == null)
+        {
+            Response.Redirect("Login.aspx"); //check that the filepath is correct
+        }
+        if (Session["employeeLoggedIn"].ToString() != "True")
+        {
+            Response.Redirect("Login.aspx"); //check that the filepath works
+        }
+
+        if (!IsPostBack)
+        {
+            try
+            {
+                SqlConnection conn = ProjectDB.connectToDB();
+                System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+                insert.Connection = conn;
+
+                //insert.CommandText = "select concat([RewardID],' ',[Name],' ',[Description], ' ',[Price],' ',[StartDate]) AS search_RewardItems from [dbo].[RewardItem]";
+                insert.CommandText = "select concat([dbo].[RewardItem].[RewardID],' ',[dbo].[RewardItem].[Name],' ',[dbo].[RewardItem].[Price],' ',[dbo].[RewardProvider].[ProviderName]) AS search_RewardItems FROM [dbo].[RewardItem] INNER JOIN [dbo].[RewardProvider] ON [dbo].[RewardItem].[ProviderID] = [dbo].[RewardProvider].[ProviderID]";
+
+                lstRewardsView.DataSource = insert.ExecuteReader();
+
+                lstRewardsView.DataTextField = "search_RewardItems";
+                lstRewardsView.DataBind();
+                lstElligable.Visible = false;
+                lstSearchName.Visible = false;
+                lstSearchProvider.Visible = false;
+                conn.Close();
+            }
+            //Shows an error message if there is a problem connecting to the database
+            catch (Exception)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ERROR')", true);
+            }
+        }
+    }
+
+    //DOES NOT WORK YET////////////////////////////////////////////////////////////////////////
+    protected void btnEligible_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            SqlConnection conn = ProjectDB.connectToDB();
+            System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+            insert.Connection = conn;
+
+            insert.CommandText = "select concat([RewardID],' ',[RewardName],' ',[RewardDescription], ' ',[Price],' ',[StartDate]) AS search_RewardItems from [dbo].[RewardItem] where "; //person's points are >= reward price
+            insert.Parameters.AddWithValue("@rewardsearch", "%" + txtSearch.Text + "%");
+            lstRewardsView.DataSource = insert.ExecuteReader();
+            //lstRewardsView.DataTextField = "search_RewardItems";
+            lstRewardsView.DataBind();
+            conn.Close();
+
+            if (lstRewardsView.Items.Count == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('There were no rewards matching your search!!')", true);
+                return;
+            }
+        }
+        //Shows an error message if there is a problem connecting to the database
+        catch (Exception)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('eligable ERROR')", true);
+        }
+    }
+
+    protected void btnSelect_Click(object sender, EventArgs e)
+    {
+        //gets the rewardID of the selected item
+        String id = "";
+        try
+        {
+            String search = lstRewardsView.SelectedItem.ToString();
+
+            for (int i = 0; i < search.Length; i++)
+            {
+                if (search.Substring(i, 1) != " ")
+                {
+                    id += search.Substring(i, 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        catch
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('You must select a reward to purchase')", true);
+        }
+       
+        try
+        {
+            SqlConnection conn = ProjectDB.connectToDB();
+            System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+            insert.Connection = conn;
+
+            insert.CommandText = "insert into [dbo].[Transaction] values (@cost, @purchaseTime, @empID, @rewardID)";
+            //use getters and setters here//////////////////////////////////////////////////////////
+            insert.Parameters.AddWithValue("@cost", 0); ////how??
+            insert.Parameters.AddWithValue("@purchaseTime", DateTime.Now);
+            insert.Parameters.AddWithValue("@empID", 1); /////find employees email
+            insert.Parameters.AddWithValue("@rewardID", id);
+            insert.ExecuteNonQuery();
+            //SEND EMAIL????///////////////////////////////////////////////////
+            conn.Close();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Reward Purchased Successfully')", true);
+        }
+        //Shows an error message if there is a problem connecting to the database
+        catch (Exception)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('data connection error')", true);
+        }
+    }
+
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        lstRewardsView.Visible = false;
+        try
+        {
+            lstRewardsView.DataSource = null;
+            lstRewardsView.Items.Clear();
+            SqlConnection conn = ProjectDB.connectToDB();
+            System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+            insert.Connection = conn;
+
+            //see if you are searching for reward name or reward provider
+            if (rdoName.Checked)
+            {
+                lstSearchName.Visible = true;
+                insert.CommandText = "select concat([RewardID],' ',[Name],' ',[Description], ' ',[Price],' ',[StartDate]) AS search_RewardItems from [dbo].[RewardItem] where lower([Name]) like lower (@rewardsearch)";
+                insert.Parameters.AddWithValue("@rewardsearch", "%" + txtSearch.Text + "%");
+                lstSearchName.DataSource = insert.ExecuteReader();
+                lstSearchName.DataTextField = "search_RewardItems";
+                lstSearchName.DataBind();
+                conn.Close();
+            }
+            else if (rdoCompany.Checked)
+            {
+                lstSearchProvider.Visible = true;
+                insert.CommandText = "select concat([RewardID],' ',[Name],' ',[Description], ' ',[Price],' ',[StartDate]) AS search_RewardItems from[dbo].[RewardItem] where lower([Name]) like lower(@rewardsearch)";
+                insert.Parameters.AddWithValue("@providersearch", "%" + txtSearch.Text + "%");
+                lstSearchProvider.DataSource = insert.ExecuteReader();
+                lstSearchProvider.DataTextField = "search_RewardProvider";
+                lstSearchProvider.DataBind();
+                conn.Close();
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('PLEASE SELECT A RADIO BUTTON')", true);
+            }
+            if (lstRewardsView.Items.Count == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('There were no rewards matching your search!!')", true);
+                return;
+            }
+        }
+        //Shows an error message if there is a problem connecting to the database
+        catch (Exception)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('ERROR2')", true);
+        }
+    }
+}

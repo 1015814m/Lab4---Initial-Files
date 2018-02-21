@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for RewardCategory
+/// </summary>
+public class RewardCategory
+{
+    private String categoryID;
+    private String description;
+    private String quantityBought;
+    private String totalSales;
+    private DateTime lastUpdated;
+    private String lastUpdatedBy;
+    public RewardCategory(String categoryID, String description, String quantityBought, String totalSales, DateTime lastUpdated, String lastUpdatedBy)
+    {
+        CategoryID = categoryID;
+        Description = description;
+        QuantityBought = quantityBought;
+        TotalSales = totalSales;
+        LastUpdated = lastUpdated;
+        LastUpdatedBy = lastUpdatedBy;
+    }
+
+    public String CategoryID
+    {
+        get
+        {
+            return categoryID;
+        }
+        private set
+        {
+            categoryID = value;
+        }
+    }
+    public String Description
+    {
+        get
+        {
+            return description;
+        }
+        private set
+        {
+            description = value;
+        }
+    }
+    public String QuantityBought
+    {
+        get
+        {
+            return quantityBought;
+        }
+        private set
+        {
+            quantityBought = value;
+        }
+    }
+    public String TotalSales
+    {
+        get
+        {
+            return totalSales;
+        }
+        private set
+        {
+            totalSales = value;
+        }
+    }
+    public DateTime LastUpdated
+    {
+        get
+        {
+            return lastUpdated;
+        }
+        private set
+        {
+            lastUpdated = value;
+        }
+    }
+    public String LastUpdatedBy
+    {
+        get
+        {
+            return lastUpdatedBy;
+        }
+        private set
+        {
+            lastUpdatedBy = value;
+        }
+    }
+}
