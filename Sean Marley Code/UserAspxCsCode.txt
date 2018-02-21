@@ -1,0 +1,66 @@
+User.aspx.cs code
+
+
+
+
+
+using database;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class WebPages_Users : System.Web.UI.Page
+{
+    public string LastUpdatedBy = "Sean Marley";
+    public static string LastUpdate = year + "-" + month + "-" + day;
+    public static string year = DateTime.Now.ToString("yyyy");
+    public static string month = DateTime.Now.Month.ToString("d2");
+    public static string day = DateTime.Now.ToString("dd");
+    public NewUser currentUser;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Submit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            SqlConnection conn = ProjectDB.connectToDB();
+            try
+            {
+                currentUser = new NewUser(FirstNameText.Text, LastNameText.Text, EmailText.Text,EmployeeLoginIDText.Text, LastUpdatedBy,LastUpdate);
+                System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
+                insert.Connection = conn;
+
+                
+
+                insert.CommandText = "Insert into [dbo].[Employee] values (@firstName, @lastName, @email, @lastUpdatedBy, @lastUpdated, @empLoginID)";
+
+                insert.Parameters.AddWithValue("@firstName", currentUser.getFirstName());
+                insert.Parameters.AddWithValue("@lastName", currentUser.getLastName());
+                insert.Parameters.AddWithValue("@email", currentUser.getEmail());
+                insert.Parameters.AddWithValue("@lastUpdatedBy", currentUser.getLastUpdatedBy());
+                insert.Parameters.AddWithValue("@lastUpdated", currentUser.getLastUpdate());
+                insert.Parameters.AddWithValue("@empLoginID", currentUser.getEmployeeLoginID());
+
+                insert.ExecuteNonQuery();
+                conn.Close();
+                SuccessLabel.Text = "*User Successfully Created";
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('error inserting into DB')", true);
+            }
+
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('error connecting to DB')", true);
+        }
+    }
+}
