@@ -135,23 +135,7 @@ public partial class WebPages_Users : System.Web.UI.Page
 
         GridView1.Visible = true;
 
-        //try
-        //{
-        //    SqlConnection conn = ProjectDB.connectToDB();
-        //    System.Data.SqlClient.SqlCommand joinTables = new System.Data.SqlClient.SqlCommand();
-        //    joinTables.Connection = conn;
-
-        //    joinTables.CommandText = "SELECT EmployeeID, FirstName, LastName, Email FROM Employee";
-        //    GridView1.DataSource = joinTables.ExecuteReader();
-        //    GridView1.DataBind();
-
-        //    conn.Close();
-        //}
-
-        //catch
-        //{
-        //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('lol you thought')", true);
-        //}
+        
     }
     //------------------------------------------------------------------------
     //------------------------------------------------------------------------
@@ -189,7 +173,13 @@ public partial class WebPages_Users : System.Web.UI.Page
         con = conn;
         //con.Open();
         //updating the record  
-        SqlCommand cmd = new SqlCommand("Update [dbo].[Employee] set [FirstName]='" + fName.Text + "',[LastName]='" + lName.Text + "',[Email]='" + email.Text + "' where EmployeeID=" + Convert.ToInt32(id.Text), con);
+        SqlCommand cmd = new SqlCommand("Update [dbo].[Employee] set [FirstName]= @firstName ,[LastName]= @lastName ,[Email]= @email where EmployeeID=" + Convert.ToInt32(id.Text), con);
+
+        cmd.Parameters.AddWithValue("@firstName", fName.Text);
+        cmd.Parameters.AddWithValue("@lastName", lName.Text);
+        cmd.Parameters.AddWithValue("@email", email.Text);
+
+
         cmd.ExecuteNonQuery();
         con.Close();
         //Setting the EditIndex property to -1 to cancel the Edit mode in Gridview  
